@@ -55,8 +55,9 @@ program.command('update <id> <description>').action((id, description) => {
     return
   }
   task.description = description
+  task.updatedAt = new Date().toTimeString()
   fs.writeFileSync('./src/mooks/tasks.json', JSON.stringify(tasks))
-  console.log(`Task updated with id: ${id}`)
+  console.log(`Task updated with id: ${id} and updatedAt: ${task.updatedAt} `)
 })
 
 program.command('remove <id>').action(id => {
